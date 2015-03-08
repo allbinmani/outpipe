@@ -1,0 +1,44 @@
+{
+  "name": "outfile",
+  "version": "1.0.0",
+  "description": "write to an output file, optionally piping through commands along the way",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "brace-expansion": "^1.1.0",
+    "duplexer2": "^0.0.2",
+    "shell-quote": "^1.4.2",
+    "stream-combiner2": "^1.0.2",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "minimist": "^1.1.0",
+    "tape": "^3.5.0",
+    "xtend": "^4.0.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/outfile.git"
+  },
+  "keywords": [
+    "output",
+    "file",
+    "pipe",
+    "shell",
+    "exec",
+    "spawn",
+    "createWriteStream",
+    "redirect"
+  ],
+  "author": "substack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/substack/outfile/issues"
+  },
+  "homepage": "https://github.com/substack/outfile"
+}
