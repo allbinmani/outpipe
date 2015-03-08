@@ -7,7 +7,6 @@
     "example": "example"
   },
   "dependencies": {
-    "brace-expansion": "^1.1.0",
     "duplexer2": "^0.0.2",
     "shell-quote": "^1.4.2",
     "stream-combiner2": "^1.0.2",
