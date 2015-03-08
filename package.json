@@ -1,6 +1,6 @@
 {
   "name": "outpipe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "write output to a file through shell commands",
   "main": "index.js",
   "directories": {
