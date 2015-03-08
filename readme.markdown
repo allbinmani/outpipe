@@ -109,7 +109,7 @@ unhandled in the command.
 With [npm](https://npmjs.org) do:
 
 ```
-npm install outfile
+npm install outpipe
 ```
 
 # license
