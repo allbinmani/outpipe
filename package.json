@@ -7,11 +7,7 @@
     "example": "example"
   },
   "dependencies": {
-    "duplexer2": "^0.0.2",
-    "shell-quote": "^1.4.2",
-    "stream-combiner2": "^1.0.2",
-    "through2": "^0.6.3",
-    "write-only-stream": "^1.1.0"
+    "shell-quote": "^1.4.2"
   },
   "devDependencies": {
     "gaze": "^0.5.1",
