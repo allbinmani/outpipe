@@ -4,11 +4,13 @@ var through = require('through2');
 var expand = require('brace-expansion');
 var combine = require('stream-combiner2');
 var duplexer = require('duplexer2');
+var writeonly = require('write-only-stream');
 var fs = require('fs');
 
 module.exports = function (str, opts) {
     if (!opts) opts = {};
     var env = opts.env || process.env;
+    if (str === '-') return writeonly(createout());
     
     return expand(str).map(function (s) {
         var parts = parse(s, env);
@@ -39,12 +41,8 @@ module.exports = function (str, opts) {
                 args.push(p.op);
             }
         }
-        var stdout = through(function (buf, enc, next) {
-            process.stdout.write(buf);
-            next();
-        });
-        
-        return combine(groups.filter(filter).map(function (g) {
+        var stdout = createout();
+        return writeonly(combine(groups.filter(filter).map(function (g) {
             if (g.op === 'write') {
                 var w = fs.createWriteStream(g.args.join(' '));
                 return duplexer(w, through());
@@ -53,8 +51,15 @@ module.exports = function (str, opts) {
                 var ps = exec(g.args.join(' '));
                 return duplexer(ps.stdin, ps.stdout);
             }
-        }).concat(stdout));
+        }).concat(stdout)));
         
         function filter (x) { return x.args.length > 0 }
     });
 };
+
+function createout () {
+    return through(function (buf, enc, next) {
+        process.stdout.write(buf);
+        next();
+    });
+}
