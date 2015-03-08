@@ -39,9 +39,12 @@ module.exports = function (str, opts) {
                 args.push(p.op);
             }
         }
-        var stdout = duplexer(through(), process.stdout);
+        var stdout = through(function (buf, enc, next) {
+            process.stdout.write(buf);
+            next();
+        });
         
-        return combine(groups.map(function (g) {
+        return combine(groups.filter(filter).map(function (g) {
             if (g.op === 'write') {
                 var w = fs.createWriteStream(g.args.join(' '));
                 return duplexer(w, through());
@@ -51,5 +54,7 @@ module.exports = function (str, opts) {
                 return duplexer(ps.stdin, ps.stdout);
             }
         }).concat(stdout));
+        
+        function filter (x) { return x.args.length > 0 }
     });
 };
