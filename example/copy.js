@@ -11,10 +11,12 @@ var argv = minimist(process.argv.slice(2), {
 var outputs = [];
 
 argv._.forEach(function (file, ix) {
-    var env = xtend(process.env, { FILE: path.basename(file) });
-    var out = outfile(argv.outfile, { env: env });
-    outputs.push.apply(outputs, out);
-    
-    var out = outputs[ix] || process.stdout;
+    if (outputs.length === 0) {
+        var env = xtend(process.env, { FILE: path.basename(file) });
+        var out = outfile(argv.outfile, { env: env });
+        outputs.push.apply(outputs, out);
+        out = outputs[ix];
+    }
+    var out = outputs[ix] || process.stdout
     fs.createReadStream(file).pipe(out);
 });

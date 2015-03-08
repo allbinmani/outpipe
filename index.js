@@ -11,7 +11,7 @@ module.exports = function (str, opts) {
     var env = opts.env || process.env;
     
     return expand(str).map(function (s) {
-        var parts = parse(str, env);
+        var parts = parse(s, env);
         var op = 'write';
         for (var i = 0; i < parts.length; i++) {
             var p = parts[i];
