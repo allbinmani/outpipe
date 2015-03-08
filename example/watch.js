@@ -15,5 +15,5 @@ read();
 
 function read () {
     var r = fs.createReadStream(file);
-    outpipe(argv.output).forEach(function (out) { r.pipe(out) });
+    r.pipe(outpipe(argv.output));
 }

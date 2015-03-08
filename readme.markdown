@@ -81,15 +81,6 @@ or we could write that size to a file:
 $ node watch.js input/x.js -o 'uglifyjs -cm | gzip | wc -c > size.txt'
 ```
 
-You can also write to more than one destination using
-[brace expansion syntax](https://www.npmjs.com/package/brace-expansion),
-which runs before everything else:
-
-``` sh
-$ node watch.js input/x.js -o 'uglifyjs -cm | gzip {| wc -c,>output/wow.js.gz}'
-125
-```
-
 # methods
 
 ``` js
