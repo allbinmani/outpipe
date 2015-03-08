@@ -1,5 +1,6 @@
 var outfile = require('../');
 var fs = require('fs');
+var path = require('path');
 var xtend = require('xtend');
 
 var minimist = require('minimist');
@@ -10,7 +11,7 @@ var argv = minimist(process.argv.slice(2), {
 var outputs = [];
 
 argv._.forEach(function (file, ix) {
-    var env = xtend(process.env, { FILE: file });
+    var env = xtend(process.env, { FILE: path.basename(file) });
     var out = outfile(argv.outfile, { env: env });
     outputs.push.apply(outputs, out);
     
