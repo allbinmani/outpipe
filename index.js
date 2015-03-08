@@ -23,6 +23,7 @@ module.exports = function (str, opts) {
         }
     }
     var p = exec(str, opts);
+    p.stderr.pipe(process.stderr, { end: false });
     p.stdout.pipe(process.stdout, { end: false });
     p.once('exit', function (code) { p.stdin.emit('exit', code) });
     return p.stdin;
