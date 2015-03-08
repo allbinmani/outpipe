@@ -101,6 +101,9 @@ a file if `>` is given.
 * `opts.env` - an object mapping environment variables to their values or a
 `function (key) {}` that returns the values.
 
+stdout and stderr are forwarded to process.stdout and process.stderr if
+unhandled in the command.
+
 # install
 
 With [npm](https://npmjs.org) do:
