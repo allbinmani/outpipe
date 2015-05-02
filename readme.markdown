@@ -20,8 +20,7 @@ You don't get the elegance of something like:
 $ browserify main.js | uglifyjs -cm | gzip > bundle.js.gz
 ```
 
-Until now! With this library and a hypothetical version of watchify, you could
-do:
+Until now! This library is what enables watchify to do:
 
 ``` sh
 $ watchify main.js -dv -o 'uglifyjs -cm | gzip > bundle.js.gz'
