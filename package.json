@@ -10,7 +10,7 @@
     "shell-quote": "^1.4.2"
   },
   "devDependencies": {
-    "gaze": "^0.5.1",
+    "gaze": "^1.0.0",
     "minimist": "^1.1.0",
     "osenv": "^0.1.0",
     "tape": "^3.5.0",
